@@ -15,7 +15,8 @@ public class TransactionMapper {
         transaction.setTypeTransaction(transactionDto.getTypeTransaction());
         transaction.setValue(transactionDto.getValue());
         transaction.setBalance(transactionDto.getBalance());
-        transaction.setAccountId(accountId);
+        //revisar
+        //transaction.setAccount(accountId);
 
         return transaction;
     }
