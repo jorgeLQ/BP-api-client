@@ -7,6 +7,7 @@ import com.client.rest.model.Client;
 import com.client.rest.repository.ClientRepository;
 import com.client.rest.service.ClientService;
 import com.client.rest.service.mapper.ClientMapper;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class ClientServiceImpl implements ClientService {
     private ClientMapper clientMapper;
 
     @Override
+    @Transactional
     public ClientDto create(ClientDto clientDto) {
         //convertir del metodo a una entidad
         Client client = clientMapper.buildClient(clientDto,true);
@@ -37,6 +39,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional
     public ClientDto update(ClientDto clientDto, String identification) {
 
         // Buscar cliente
@@ -65,6 +68,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional
     public void delete(String identification) {
         // Buscar la entidad existente por identificación
         Optional<Client> ClienDB = clientRepository.findByIdentification(identification);
@@ -86,7 +90,7 @@ public class ClientServiceImpl implements ClientService {
             });
             return listDto;
         }catch (Exception e){
-            throw new ClientCustomerException("No se pudo crear la cuenta");
+            throw new ClientCustomerException("No se pudo obtener los registros");
         }
 
 

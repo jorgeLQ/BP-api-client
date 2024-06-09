@@ -21,7 +21,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer transactionId;
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date date;
     @Enumerated(EnumType.STRING)
     private TypeTransaction typeTransaction;
@@ -30,7 +30,7 @@ public class Transaction {
     @Builder.Default
     private double balance=0.00;
     private Integer accountId;
-    @ManyToOne
-    private Account account;
+    //@ManyToOne
+    //private Account account;
 
 }

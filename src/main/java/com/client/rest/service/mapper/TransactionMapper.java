@@ -19,9 +19,22 @@ public class TransactionMapper {
 
         return transaction;
     }
-    public TransactionDto buildTransactionDto(Transaction transaction, String accountNumber){
+    public TransactionDto buildTransactionDto(Transaction transaction, String accountNumber, Double initialBalance){
         TransactionDto transactionDto = new TransactionDto();
 
+        transactionDto.setDate(transaction.getDate());
+        transactionDto.setTypeTransaction(transaction.getTypeTransaction());
+        transactionDto.setInitialBalance(initialBalance);
+        transactionDto.setValue(transaction.getValue());
+        transactionDto.setBalance(transaction.getBalance());
+        transactionDto.setAccountNumber(accountNumber);
+
+        return transactionDto;
+    }
+
+    public TransactionDto buildTransactionDto1(Transaction transaction, String accountNumber){
+        TransactionDto transactionDto = new TransactionDto();
+        transactionDto.setTransactionId(transaction.getTransactionId());
         transactionDto.setDate(transaction.getDate());
         transactionDto.setTypeTransaction(transaction.getTypeTransaction());
         transactionDto.setValue(transaction.getValue());

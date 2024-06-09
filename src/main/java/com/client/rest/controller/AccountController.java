@@ -48,14 +48,13 @@ public class AccountController {
     }
 
     @DeleteMapping("/delete/{accountNumber}")
-    public ResponseEntity<Void> delete(@PathVariable String accountNumber) {
+    public ResponseEntity<String> delete(@PathVariable String accountNumber) {
         try {
             accountService.delete(accountNumber);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Cuenta eliminada exitosamente", HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
 }
