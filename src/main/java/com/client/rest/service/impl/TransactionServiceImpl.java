@@ -59,7 +59,8 @@ public class TransactionServiceImpl implements TransactionService {
             transactionNew.setTypeTransaction(transactionDto.getTypeTransaction());
             transactionNew.setValue(transactionDto.getValue());
             transactionNew.setBalance(nuevoSaldo);
-            transactionNew.setAccountId(existingAccount.getAccountId());
+            //revisaaaaar
+            transactionNew.setAccount(existingAccount);
             transactionRepository.save(transactionNew);
             TransactionDto transactionDto1 = transactionMapper.buildTransactionDto(transactionNew,existingAccount.getAccountNumber(),initialBalance);
 
@@ -78,7 +79,8 @@ public class TransactionServiceImpl implements TransactionService {
         transactionNew.setTypeTransaction(transactionDto.getTypeTransaction());
         transactionNew.setValue(transactionDto.getValue());
         transactionNew.setBalance(nuevoSaldo);
-        transactionNew.setAccountId(existingAccount.getAccountId());
+        //revisarrrr
+        transactionNew.setAccount(existingAccount);
         transactionRepository.save(transactionNew);
         TransactionDto transactionDto1 = transactionMapper.buildTransactionDto(transactionNew,existingAccount.getAccountNumber(),initialBalance);
 
@@ -102,7 +104,7 @@ public class TransactionServiceImpl implements TransactionService {
             });
             return listDto;
         }catch (Exception e){
-            throw new TransactionCustomerException("No se pudo obtener los registros");
+            throw new TransactionCustomerException("No se pudo obtener los registros de las Transacciones");
         }
 
     }

@@ -90,7 +90,7 @@ public class ClientServiceImpl implements ClientService {
             });
             return listDto;
         }catch (Exception e){
-            throw new ClientCustomerException("No se pudo obtener los registros");
+            throw new ClientCustomerException("No se pudo obtener los registros de Clientes");
         }
 
 

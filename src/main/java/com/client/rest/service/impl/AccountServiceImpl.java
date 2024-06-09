@@ -65,7 +65,7 @@ public class AccountServiceImpl implements AccountService {
     @Transactional
     public AccountDto update(AccountDto accountDto, String accountNumber) {
 
-        Optional<Account> accountDB= accountRepository.findByAccountNumber(accountDto.getAccountNumber());
+        Optional<Account> accountDB= accountRepository.findByAccountNumber(accountNumber);
         if(!accountDB.isPresent()){
             throw new AccountCustomerException("La cuenta no existe");
         }
@@ -107,13 +107,11 @@ public class AccountServiceImpl implements AccountService {
                     AccountDto accountDto = accountMapper.buildAccountDto(account, clientDto);
                     // Agregar el AccountDto a la lista
                     listDto.add(accountDto);
-                } else {
-                    log.warn("Cliente no encontrado");
                 }
             }
             return listDto;
         }catch (Exception e){
-            throw new AccountCustomerException("No se pudo crear la cuenta");
+            throw new AccountCustomerException("No se pudo obtener los registros de Cuentas");
         }
 
     }

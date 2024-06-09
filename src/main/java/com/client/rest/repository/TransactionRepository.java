@@ -15,7 +15,7 @@ public interface TransactionRepository extends JpaRepository<Transaction,Integer
 
     @Modifying
     @Transactional
-    @Query(value = "SELECT * FROM transaction WHERE account_id = :account_id", nativeQuery = true)
+    @Query(value = "SELECT * FROM transaction WHERE account_account_id = :account_id", nativeQuery = true)
     List<Transaction>  transactionByAccountNumber(@Param("account_id") Integer account_id);
 
 }
