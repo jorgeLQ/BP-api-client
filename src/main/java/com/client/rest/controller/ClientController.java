@@ -16,7 +16,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<List<ClientDto>> getAllClient() {
         try {
             List<ClientDto> clients = clientService.listAll();
@@ -27,19 +27,19 @@ public class ClientController {
 
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<ClientDto> create(@RequestBody ClientDto clientDto) {
         try {
             ClientDto clientDto1 = clientService.create(clientDto);
             return new ResponseEntity<>(clientDto1, HttpStatus.CREATED);
+            //return ResponseEntity.status(201).body(clientDto1);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping("update/{identification}")
+    @PutMapping("/update/{identification}")
     public ResponseEntity<ClientDto> update(@RequestBody ClientDto clientDto, @PathVariable String identification) {
-        //return clientService.update(clientDto,identification);
         try {
             ClientDto clientDto1 = clientService.update(clientDto,identification);
             return new ResponseEntity<>(clientDto1, HttpStatus.OK);
@@ -49,10 +49,10 @@ public class ClientController {
     }
 
     @DeleteMapping("/delete/{identification}")
-    public ResponseEntity<Void> delete(@PathVariable String identification) {
+    public ResponseEntity<String> delete(@PathVariable String identification) {
         try {
             clientService.delete(identification);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Cliente eliminado exitosamente", HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

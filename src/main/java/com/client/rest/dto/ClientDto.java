@@ -11,8 +11,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Getter
+@Setter
 @Builder
-@Data
+//@Data
 public class ClientDto implements Serializable {
 
     @NotBlank(message = "El campo name es requerido")

@@ -11,6 +11,7 @@ import com.client.rest.repository.ClientRepository;
 import com.client.rest.service.AccountService;
 import com.client.rest.service.ClientService;
 import com.client.rest.service.mapper.AccountMapper;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class AccountServiceImpl implements AccountService {
     private ClientService clientService;
 
     @Override
+    @Transactional
     public AccountDto create(AccountDto accountDto) {
         Optional<Account> accountDB= accountRepository.findByAccountNumber(accountDto.getAccountNumber());
         if(accountDB.isPresent()){
@@ -60,6 +62,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
+    @Transactional
     public AccountDto update(AccountDto accountDto, String accountNumber) {
 
         Optional<Account> accountDB= accountRepository.findByAccountNumber(accountDto.getAccountNumber());
@@ -80,6 +83,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Transactional
     public void delete(String accountNumber) {
         Optional<Account> accountDB = accountRepository.findByAccountNumber(accountNumber);
         if (!accountDB.isPresent()) {
