@@ -74,6 +74,10 @@ public class TransactionServiceImpl implements TransactionService {
         existingAccount.setInitialBalance(nuevoSaldo);
         accountRepository.updateSaldo(existingAccount.getAccountNumber(),nuevoSaldo);
         Date todayDate = new Date();
+
+        // consultar
+        // Account.builder().accountId(2).accountNumber("21432").status(true);
+
         Transaction  transactionNew = new Transaction();
         transactionNew.setDate(todayDate);
         transactionNew.setTypeTransaction(transactionDto.getTypeTransaction());

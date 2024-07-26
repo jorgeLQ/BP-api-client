@@ -56,7 +56,6 @@ public class AccountServiceImpl implements AccountService {
         account=accountRepository.save(account);
 
         AccountDto accountDto1= accountMapper.buildAccountDto(account,clientDto);
-
         return accountDto1;
     }
 

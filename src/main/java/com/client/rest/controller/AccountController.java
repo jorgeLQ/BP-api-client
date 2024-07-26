@@ -17,6 +17,7 @@ public class AccountController {
 
     @PostMapping("create")
     public ResponseEntity<AccountDto> create(@RequestBody AccountDto accountDto) {
+        //intercepcion sin try catch
         try {
             AccountDto accountDto1 = accountService.create(accountDto);
             return new ResponseEntity<>(accountDto1, HttpStatus.CREATED);
